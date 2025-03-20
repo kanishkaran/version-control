@@ -8,16 +8,13 @@ Step 1: Initialize Git Repository
 
 -Created a folder named task1 and added a test file with content.
 
--Renamed the default branch from master to main:
-    * git branch -m main
-
 -Added and committed the initial file:
     * git add .
     * git commit -m "Add Initial Sample File"
 
 -Connected the local repository to a remote repository and pushed changes:
     * git remote add origin https://github.com/kanishkaran/version-control.git
-    * git push origin main
+    * git push origin master
 
 
 Step 2: Create and Work on a New Branch
@@ -41,7 +38,7 @@ Step 3: Merge Changes to Main Branch
 Step 4: Push Merged Changes to Remote Repository
 
 -Pushed the updated main branch to the remote repository:
-    * git push origin main
+    * git push origin master
 
 -Verified:
     * git log --oneline

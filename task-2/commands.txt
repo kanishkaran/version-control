@@ -1,0 +1,43 @@
+This document outlines the process followed to use a .gitignore file, track files, and manage ignored files in a Git repository.
+
+Step 1: Navigate to Task-2 Directory and Initialize .gitignore
+
+-created task-2 folder:
+    * mkdir task-2 && cd task-2
+
+-Created a .gitignore file
+
+Step 2: Define Ignore Patterns in .gitignore
+
+-Added patterns to ignore log files and temporary files:
+      .env
+       temp/
+
+Step 3: Create Sample Files
+
+-Created files that match and do not match the ignore patterns:
+    * .env
+    * mkdir temp && touch temp/temp.txt
+
+Step 4: Added, Verify Tracked and Ignored Files
+
+-Added, Checked the status of tracked and ignored files:
+    * git add .
+    * git status
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:
+        On branch master
+        Your branch is up to date with 'origin/master'.
+
+        Changes to be committed:
+          (use "git restore --staged <file>..." to unstage)
+                new file:   .gitignore
+                new file:   Hello_World.py
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 5: Commit Only the Non-Ignored Files
+
+-committed only the required files:
+    * git commit -m "Add gitignore and Track files"

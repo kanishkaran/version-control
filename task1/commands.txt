@@ -1,0 +1,51 @@
+This document outlines the process followed to initialize a Git repository, create and manage branches, make changes, and push updates to a remote repository.
+
+
+Step 1: Initialize Git Repository
+
+-Created a directory named version-control and initialized Git.
+    * git init
+
+-Created a folder named task1 and added a test file with content.
+
+-Renamed the default branch from master to main:
+    * git branch -m main
+
+-Added and committed the initial file:
+    * git add .
+    * git commit -m "Add Initial Sample File"
+
+-Connected the local repository to a remote repository and pushed changes:
+    * git remote add origin https://github.com/kanishkaran/version-control.git
+    * git push origin main
+
+
+Step 2: Create and Work on a New Branch
+
+-Created a new branch and switched to it:
+    * git checkout -b new-feature
+
+-Made changes to the test file and committed the changes:
+    * git add .
+    * git commit -m "Make Change in Test File"
+
+Step 3: Merge Changes to Main Branch
+
+-Switched back to the main branch:
+    * git checkout master
+
+-Merged the new-feature branch into main:
+    * git merge new-feature
+
+
+Step 4: Push Merged Changes to Remote Repository
+
+-Pushed the updated main branch to the remote repository:
+    * git push origin main
+
+-Verified:
+    * git log --oneline
+
+    Output-
+        e980563 (HEAD -> main, origin/master, new-feature) Make Change in Test File
+        04ca7c6 Add Initial Sample File

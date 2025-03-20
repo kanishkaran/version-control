@@ -44,5 +44,5 @@ Step 4: Push Merged Changes to Remote Repository
     * git log --oneline
 
     Output-
-        e980563 (HEAD -> main, origin/master, new-feature) Make Change in Test File
+        e980563 (HEAD -> master, origin/master, new-feature) Make Change in Test File
         04ca7c6 Add Initial Sample File

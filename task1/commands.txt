@@ -26,12 +26,12 @@ Step 2: Create and Work on a New Branch
     * git add .
     * git commit -m "Make Change in Test File"
 
-Step 3: Merge Changes to Main Branch
+Step 3: Merge Changes to Master Branch
 
--Switched back to the main branch:
+-Switched back to the Master branch:
     * git checkout master
 
--Merged the new-feature branch into main:
+-Merged the new-feature branch into Master:
     * git merge new-feature
 
 

@@ -1,0 +1,92 @@
+This document outlines the process followed to create and manage branches, stash changes, and commit updates in a Git repository.
+
+Step 1: Create and Initialize Task-6
+
+- Created task-6 folder:
+    * mkdir task-6
+
+- Created an index file and committed it:
+    * git add index.html
+    * git commit -m "Add index file for task 6"
+
+    index.html content:
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        This is the initial Document on the master branch
+    </body>
+    </html>
+
+Step 2: Create a New Branch and Stash Changes
+
+- Created a new branch:
+    * git switch -c new-branch
+
+- Worked on something in the new branch and stashed the changes:
+    * git stash
+
+Step 3: Switch to Master, Update, and Commit
+
+- Switched back to master:
+    * git switch master
+
+- Updated the index file and committed the changes:
+    index.html content:
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        This is the initial Document on the master branch
+
+        working on something more in master branch
+    </body>
+    </html>
+
+    * git add index.html
+    * git commit -m "change index file in master"
+
+Step 4: Retrieve Stashed Changes in New Branch
+
+- Switched back to the new branch:
+    * git checkout new-branch
+
+- Applied the stashed changes:
+    * git stash pop
+
+- Committed the applied stash:
+    * git commit -m "pop stashed in new branch"
+
+Step 5: Stash Again and Manage Stash List
+
+- Worked on something new in the branch and stashed again:
+    * git stash
+
+- Switched to master:
+    * git switch master
+
+- Checked the stash list:
+    * git stash list
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:
+        stash@{0} WIP on new branch
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 6: Drop Stashed Changes
+
+- Dropped the most recent stash:
+    * git stash drop stash@{0}
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:
+        Dropped stash@{0} (3bba44a02f8b9049109a1875b7bfe42804af6106)
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+

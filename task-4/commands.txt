@@ -1,0 +1,88 @@
+This document outlines the process followed to create a new branch, modify files in both branches, merge changes, and resolve conflicts in a Git repository.  
+
+Step 1: Create and Add Task-4 Directory  
+- Created the task-4 folder and added it to Git:  
+    ```
+    mkdir task-4
+    git add task-4
+    ```  
+
+Step 2: Create and Commit the Initial HTML File  
+- Navigated to task-4 and created `index.html`:  
+    ```
+    cd task-4
+    code index.html
+    ```  
+- Added the following content to `index.html`:  
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>This is a Sample Document</p>
+    </body>
+    </html>
+    ```
+- Added and committed the file:  
+    ```
+    git add .
+    git commit -m "Add initial index.html file"
+    ```  
+
+ Step 3: Create and Modify in a New Branch  
+- Created a new branch and switched to it:  
+    ```
+    git checkout -b new_branch
+    ```  
+- Modified `index.html` in the new branch:  
+    ```html
+    <body>
+        <p>This is a Sample Document</p>
+        <p>This is modified in the new Branch</p>
+    </body>
+    ```
+- Added and committed the changes:  
+    ```
+    git add .
+    git commit -m "Add modified file from new branch"
+    ```  
+
+Step 4: Modify in the Master Branch  
+- Switched back to the master branch:  
+    ```
+    git checkout master
+    ```  
+- Modified `index.html` in master:  
+    ```html
+    <body>
+        <p>This is a Sample Document</p>
+        <p>This is modified in the master Branch</p>
+    </body>
+    ```
+- Added and committed the changes:  
+    ```
+    git add .
+    git commit -m "Add Modified File from master Branch"
+    ```  
+
+Step 5: Merge and Resolve Conflict  
+- Attempted to merge `new_branch` into `master`, which resulted in a conflict:  
+    ```
+    git merge new_branch
+    ```  
+- Resolved the conflict manually by combining changes from both branches:  
+    ```html
+    <body>
+        <p>This is a Sample Document</p>
+        <p>This is modified in the new Branch</p>
+    </body>
+    ```
+- Added and committed the resolved file:  
+    ```
+    git add .
+    git commit -m "Resolved Conflict"
+    ```

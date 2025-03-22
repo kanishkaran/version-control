@@ -1,0 +1,130 @@
+This document outlines the process followed to modify a tracked file, commit changes, and safely revert a commit in a Git repository using `git revert` and `git reset`.
+
+Step 1: Navigate to Task-3 Directory and Initialize Repository  
+
+-Created task-3 folder:  
+    * mkdir task-3 && cd task-3  
+
+-Initialized Git repository:  
+    * git init  
+
+Step 2: Create and Commit a New File (revertfile.txt)  
+
+-Created a file named `revertfile.txt` and added content:  
+    * echo "This is a file to be reverted." > revertfile.txt  
+
+-Added and committed the file:  
+    * git add revertfile.txt  
+    * git commit -m "Add file to be reverted"  
+
+Step 3: Modify sample.txt and Commit Changes  
+
+-Created a file named `sample.txt` and added content:  
+    * echo "This is a Sample text file for task 3" > sample.txt  
+    * echo "" >> sample.txt  
+    * echo "this is some change in sample file" >> sample.txt  
+
+-Added and committed the change:  
+    * git add sample.txt  
+    * git commit -m "Update Sample file for task 3"  
+
+Step 4: Revert the Commit that Added revertfile.txt  
+
+-Checked commit history:  
+    * git log --oneline  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        689fd85 (HEAD -> master) Update Sample file for task 3  
+        064d49e Add file to be reverted  
+        bbb1c63 Add Sample file for task 3  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Reverted the commit that added `revertfile.txt`:  
+    * git revert 064d49e  
+
+-Checked commit history after revert:  
+    * git log --oneline  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        a1b2c3d (HEAD -> master) Revert "Add file to be reverted"  
+        689fd85 Update Sample file for task 3  
+        064d49e Add file to be reverted  
+        bbb1c63 Add Sample file for task 3  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 5: Reset Commands to Undo Commits (Be Careful!)  
+
+-Soft Reset (Keep Changes Staged, Undo Commit Only):  
+    * git reset --soft HEAD~1  
+
+-Checked status:  
+    * git status  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        Changes to be committed:  
+            modified: sample.txt  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Mixed Reset (Keep Changes in Working Directory, Unstage Them):  
+    * git reset --mixed HEAD~1  
+
+-Checked status:  
+    * git status  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        Changes not staged for commit:  
+            modified: sample.txt  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Hard Reset (Deletes Commits and Changes, Irreversible!):  
+    * git reset --hard HEAD~1  
+
+-Checked log:  
+    * git log --oneline  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        689fd85 Update Sample file for task 3  
+        bbb1c63 Add Sample file for task 3  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    * Commit 064d49e is gone, and changes are deleted.
+
+Step 6: Difference in File Content Before and After Reverting  
+
+-Before Reverting (`ls -l` and `cat revertfile.txt`):  
+    * ls -l  
+    * cat revertfile.txt  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        revertfile.txt  sample.txt  
+
+        This is a file to be reverted.  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-After Reverting (`ls -l`):  
+    * ls -l  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        sample.txt  
+
+        `revertfile.txt` has been removed.  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 7: Comparison of Undoing Methods  
+
+| Method                   | Effect on History         | Effect on Files                  | Use Case                                  |  
+|--------------------------|--------------------------|----------------------------------|-------------------------------------------|  
+| git restore <file>       | No impact                | Restores file to last commit    | Undo uncommitted changes                  |  
+| git revert <commit>      | Creates a new commit     | Undoes specific commit while keeping history | Safe rollback in shared repos |  
+| git reset --soft <commit> | Moves HEAD back         | Keeps changes staged            | Undo commit, but keep work               |  
+| git reset --mixed <commit> | Moves HEAD back       | Keeps changes unstaged          | Undo commit and unstage work             |  
+| git reset --hard <commit> | Deletes commits        | Erases all changes permanently  | Dangerous, use with caution              |  
+
+For shared repositories, `git revert` is the safest option as it does not rewrite history.

@@ -1,0 +1,96 @@
+Git Branch Management and Cherry-Picking for Task-7
+
+
+Step 1: Create and Initialize Task-7
+
+    Navigated to the task-7 folder:
+
+        * cd task-7
+
+- Created an index file and committed it:
+
+    * git add index.html
+    * git commit -m "Add index file for task 7"
+--------------------------------------------------------------------------------------------------------------------------------
+index.html content:
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        This is the base document for task 7
+    </body>
+    </html>
+--------------------------------------------------------------------------------------------------------------------------------
+
+Step 2: Create a New Branch and Add Navbar
+
+    Created a new branch navbar:
+
+    * git checkout -b navbar
+
+- Added navbar code and committed it:
+
+    * git add navbar.html
+    * git commit -m "Add navbar to code base for task 7"
+
+--------------------------------------------------------------------------------------------------------------------------------
+navbar.html content:
+
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About me</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+--------------------------------------------------------------------------------------------------------------------------------
+
+Step 3: Switch to Master and Add Footer
+
+    Switched back to master:
+
+    * git switch master
+
+- Added a footer file and committed it:
+
+    * git add footer.html
+    * git commit -m "Add footer code for task 7"
+
+--------------------------------------------------------------------------------------------------------------------------------
+footer.html content:
+
+    <footer>
+        This is the footer code for task 7
+    </footer>
+--------------------------------------------------------------------------------------------------------------------------------
+
+Step 4: Cherry-Pick Navbar Changes to Master
+
+- Checked commit history of the navbar branch:
+
+    * git log navbar --oneline
+
+Output:
+
+a05d8fe (navbar) Add navbar to code base for task 7
+
+Cherry-picked the navbar commit into master:
+
+    * git cherry-pick a05d8fe
+
+Verified commit history in master:
+
+git log --oneline
+
+Output:
+
+    becece0 (HEAD -> master) Add navbar to code base for task 7
+    252aff1 Add footer code for task 7
+    9418830 Add index file for task 7
+
+This completes the process of managing branches and using git cherry-pick to apply specific changes across branches in Task-7.

@@ -12,7 +12,7 @@ This guide explains how to create a local repository, create a new branch, make 
    ```
 2. Create a new branch:
    ```sh
-   git checkout -b feature-branch
+   git checkout -b task-9
    ```
 
 
@@ -26,7 +26,7 @@ This guide explains how to create a local repository, create a new branch, make 
    ```
 3. Commit the changes:
    ```sh
-   git commit -m "Added new feature"
+   git commit -m "Sample file for task 9"
    ```
 
 ![Git Logs](logs.png)
@@ -36,7 +36,7 @@ This guide explains how to create a local repository, create a new branch, make 
 ## **3. Push Changes and Create a Pull Request**
 1. Push the branch to the remote repository:
    ```sh
-   git push origin feature-branch
+   git push origin task-9
    ```
 2. Open GitHub/GitLab/Bitbucket and navigate to your repository.
 3. Click on **"New Pull Request"**.
@@ -62,11 +62,11 @@ This guide explains how to create a local repository, create a new branch, make 
 ## **5. Merge the PR and Pull the Changes Locally**
 1. After merging, switch back to `main`:
    ```sh
-   git checkout main
+   git checkout master
    ```
 2. Pull the latest changes:
    ```sh
-   git pull origin main
+   git pull
    ```
 
 ![Pull Changes](pull%20to%20local%20repo.png)

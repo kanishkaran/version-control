@@ -1,0 +1,60 @@
+This document outlines the process followed to clean up commit history using `git rebase -i` in a Git repository.
+
+Step 1: Initial Commit History Before Rebase  
+
+- Checked commit history:  
+    * git log --oneline  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        f476e9f (HEAD -> another-branch) Add unwanted change  
+        079f8fb update sample file for task 5  
+        2c5fdbe Add updates in another branch  
+        72d9f62 Add sample file for task 5  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 2: Perform Interactive Rebase  
+
+- Started an interactive rebase for the last 4 commits:  
+    * git rebase -i HEAD~4  
+
+- Modified the rebase file to squash and drop unwanted commits:  
+        pick 72d9f62 Add sample file for task 5
+        squash 079f8fb update sample file for task 5
+        pick 2c5fdbe Add updates in another branch
+        drop f476e9f Add unwanted change
+
+- Saved and exited the editor.
+
+Step 3: Edit the Commit Message  
+
+- Git prompted for a new commit message for the squashed commits.  
+- Updated the message and saved.
+
+Step 4: Complete the Rebase  
+
+- Continued the rebase process:  
+    * git rebase --continue  
+
+- If conflicts occurred, resolved them in VS Code, then:  
+    * git add .  
+    * git rebase --continue  
+
+Step 5: Commit History After Rebase  
+
+- Checked the new commit history:  
+    * git log --oneline  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    Output:  
+        c6cd522 (HEAD -> another-branch) update sample file for task 5  
+        90d9a4b Update sample file and newfile  
+        78450d9 (origin/master) Add readme file for task 3  
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 6: Push the Cleaned-Up History  
+
+- Since rebase rewrites commit history, force push was required:  
+    * git push origin another-branch --force  
+
+By using interactive rebase, the commit history was cleaned up, redundant commits were merged, and an unwanted commit was removed, resulting in a more structured Git log before merging into the main branch.
